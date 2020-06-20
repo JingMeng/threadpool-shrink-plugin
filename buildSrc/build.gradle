@@ -1,0 +1,83 @@
+buildscript {
+    ext.kotlin_version = '1.3.72'
+    repositories {
+        mavenLocal()
+        google()
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        google()
+        jcenter()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'kotlin'
+
+
+compileKotlin {
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+group = 'com.github.wei120698598'
+
+archivesBaseName = "ThreadPoolShrinkPlugin"
+
+//sourceSets {
+//    main.java.srcDirs('../threadpool/src/main/java')
+//}
+
+jar {
+    from sourceSets.main.java.srcDirs, sourceSets.main.groovy.srcDirs, sourceSets.main.kotlin.srcDirs
+    manifest {
+        attributes "Manifest-Version": "1.0.0"
+        attributes "Create-by": "shuxin.wei"
+    }
+}
+
+javadoc {
+    failOnError = false
+}
+
+// 打包源码jar
+task sourcesJar(type: Jar) {
+    from sourceSets.main.java.srcDirs, sourceSets.main.groovy.srcDirs, sourceSets.main.kotlin.srcDirs
+    classifier = 'sources'
+}
+
+
+// 打包文档jar
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'com.android.tools.build:gradle:3.5.3'
+    implementation 'org.javassist:javassist:3.27.0-GA'
+    testImplementation 'junit:junit:4.12'
+}

@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.planb.threadpool.shrink'
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.planb.thread"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+}
+threadPoolShrinkOptions {
+    enabled  true
+    debug true
+    defaultExecutorSignature 'com.planb.thread.DefaultThreadPoolExecutor.defaultExecutor'
+    defaultScheduledExecutorSignature 'com.planb.thread.DefaultThreadPoolExecutor.defaultScheduledExecutor'
+    filterClassSignature('com.planb.thread.ExcludeThreadPoolActivity')
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation project(':test')
+}
