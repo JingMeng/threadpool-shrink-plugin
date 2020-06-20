@@ -26,14 +26,6 @@ apply plugin: 'groovy'
 apply plugin: 'kotlin'
 apply plugin: 'com.github.dcendents.android-maven'
 
-
-compileKotlin {
-    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8
-}
-
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
-
 group = 'com.github.wei120698598'
 
 archivesBaseName = "ThreadPoolShrinkPlugin"
@@ -43,6 +35,7 @@ archivesBaseName = "ThreadPoolShrinkPlugin"
 //}
 
 jar {
+    from sourceSets.main.java.srcDirs, sourceSets.main.groovy.srcDirs, sourceSets.main.kotlin.srcDirs
     manifest {
         attributes "Manifest-Version": "1.0.0"
         attributes "Create-by": "shuxin.wei"
@@ -55,6 +48,7 @@ javadoc {
 
 // 打包源码jar
 task sourcesJar(type: Jar) {
+    from sourceSets.main.java.srcDirs, sourceSets.main.groovy.srcDirs, sourceSets.main.kotlin.srcDirs
     classifier = 'sources'
 }
 
