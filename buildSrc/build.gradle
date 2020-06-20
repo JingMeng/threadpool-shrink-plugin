@@ -55,7 +55,6 @@ javadoc {
 
 // 打包源码jar
 task sourcesJar(type: Jar) {
-    from sourceSets.main.java.srcDirs, sourceSets.main.groovy.srcDirs, sourceSets.main.kotlin.srcDirs
     classifier = 'sources'
 }
 
