@@ -43,7 +43,6 @@ archivesBaseName = "ThreadPoolShrinkPlugin"
 //}
 
 jar {
-    from sourceSets.main.java.srcDirs, sourceSets.main.groovy.srcDirs, sourceSets.main.kotlin.srcDirs
     manifest {
         attributes "Manifest-Version": "1.0.0"
         attributes "Create-by": "shuxin.wei"
