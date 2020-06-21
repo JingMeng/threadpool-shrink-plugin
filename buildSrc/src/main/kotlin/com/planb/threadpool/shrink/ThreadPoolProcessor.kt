@@ -47,10 +47,7 @@ val scheduledExecutorServiceMethods = arrayOf(
         "unconfigurableScheduledExecutorService"
 )
 
-val defaultFilterExecutorMethodPrint = hashSetOf(
-        "execute",
-        "submit"
-)
+val defaultFilterExecutorMethodPrint = HashSet<String>()
 
 val defaultFilterClassSignaturePrefix = hashSetOf(
         "android.support.v4.content",
@@ -89,8 +86,8 @@ fun loadClassPath(project: Project, options: ThreadPoolShrinkOptions) {
                     threadPoolShrinkOptions.defaultScheduledExecutorSignature!!.length
             )
 
-    defaultFilterExecutorMethodPrint.addAll(threadPoolShrinkOptions.filterExecutorMethodPrint)
-    defaultFilterClassSignaturePrefix.addAll(threadPoolShrinkOptions.filterClassSignaturePrefix)
+    defaultFilterExecutorMethodPrint.addAll(threadPoolShrinkOptions.executorMethodPrintFilter)
+    defaultFilterClassSignaturePrefix.addAll(threadPoolShrinkOptions.classSignaturePrefixFilter)
 
     isLoaded = true
     if (project.plugins.hasPlugin(AppPlugin::class.java)) {

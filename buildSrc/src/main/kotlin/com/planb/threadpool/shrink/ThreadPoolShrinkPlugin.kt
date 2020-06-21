@@ -28,9 +28,9 @@ open class ThreadPoolShrinkOptions {
 
     var enabled = true
 
-    var filterClassSignaturePrefix: MutableList<String> = ArrayList()
+    var classSignaturePrefixFilter: MutableList<String> = ArrayList()
 
-    var filterExecutorMethodPrint: MutableList<String> = ArrayList()
+    var executorMethodPrintFilter: MutableList<String> = ArrayList()
 
     var defaultExecutorSignature: String? = null
 
