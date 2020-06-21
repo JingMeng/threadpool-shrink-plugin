@@ -66,6 +66,10 @@ class ThreadPoolShrinkTransform(
             println("---------------${ThreadPoolShrinkTransform::class.java.simpleName}${if (transformInvocation.isIncremental) "incremental" else ""} Begin---------------")
         }
 
+        if (!transformInvocation.isIncremental){
+            outputProvider.deleteAll()
+        }
+
         loadClassPath(project, options)
         transformInvocation.inputs.forEach {
             it.directoryInputs.forEach {

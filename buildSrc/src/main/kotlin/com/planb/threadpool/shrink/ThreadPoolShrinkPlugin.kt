@@ -13,10 +13,10 @@ internal class ThreadPoolShrinkPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         val appExtension: AppExtension? = project.extensions.findByType(AppExtension::class.java)
         val options =
-            project.extensions.create(
-                "threadPoolShrinkOptions",
-                ThreadPoolShrinkOptions::class.java
-            )
+                project.extensions.create(
+                        "threadPoolShrinkOptions",
+                        ThreadPoolShrinkOptions::class.java
+                )
         appExtension?.registerTransform(ThreadPoolShrinkTransform(project, options))
     }
 }
@@ -28,7 +28,9 @@ open class ThreadPoolShrinkOptions {
 
     var enabled = true
 
-    var filterClassSignature: Array<String> = emptyArray()
+    var filterClassSignaturePrefix: MutableList<String> = ArrayList()
+
+    var filterExecutorMethodPrint: MutableList<String> = ArrayList()
 
     var defaultExecutorSignature: String? = null
 
