@@ -42,11 +42,9 @@ class ThreadTest {
                 }
             });
         }
-        threadPool.shutdownNow();
 
         ThreadPoolExecutor threadPool2 = new ThreadPoolExecutor(50, Integer.MAX_VALUE,
                 60L, TimeUnit.SECONDS,
                 new SynchronousQueue<Runnable>());
-        threadPool2.shutdown();
     }
 }
