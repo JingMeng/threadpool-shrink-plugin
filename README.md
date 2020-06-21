@@ -1,4 +1,5 @@
-# ThreadPoolShrinkPlugin
+# ThreadPoolShrinkPlugin [![](https://jitpack.io/v/wei120698598/threadpool-shrink-plugin.svg)](https://jitpack.io/#wei120698598/threadpool-shrink-plugin)
+
 ## 线程治理
 > Android项目经常引用大量的第三方框架和SDK，这些框架中创建的线程池是完全不受控制的，如果使用不当，将会积攒大量无法回收的线程。
 > 大多数厂商会对线程数进行限制，线程数过多直接引起崩溃；
