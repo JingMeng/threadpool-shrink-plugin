@@ -31,7 +31,7 @@ threadPoolShrinkOptions {
     defaultExecutorSignature 'com.planb.thread.DefaultThreadPoolExecutor.defaultExecutor'
     defaultScheduledExecutorSignature 'com.planb.thread.DefaultThreadPoolExecutor.defaultScheduledExecutor'
     filterClassSignaturePrefix =  [
-
+            'com.planb.thread.ExcludeThreadPoolActivity'
     ]
 }
 
